@@ -3,6 +3,40 @@
 #ifndef _PTHREAD_H
 #define _PTHREAD_H	1
 
+
+
+#define PTHREAD_CANCEL_ASYNCHRONOUS     (void *)NULL
+#define PTHREAD_CANCEL_ENABLE           (void *)NULL
+#define PTHREAD_CANCEL_DEFERRED         (void *)NULL
+#define PTHREAD_CANCEL_DISABLE          (void *)NULL
+#define PTHREAD_CANCELED                (void *)NULL
+#define PTHREAD_COND_INITIALIZER        (void *)NULL
+#define PTHREAD_CREATE_DETACHED         (void *)NULL
+#define PTHREAD_CREATE_JOINABLE         (void *)NULL
+#define PTHREAD_EXPLICIT_SCHED          (void *)NULL
+#define PTHREAD_INHERIT_SCHED           (void *)NULL
+#define PTHREAD_MUTEX_DEFAULT           (void *)NULL
+#define PTHREAD_MUTEX_ERRORCHECK        (void *)NULL
+#define PTHREAD_MUTEX_NORMAL            (void *)NULL
+#define PTHREAD_MUTEX_INITIALIZER       (void *)NULL
+#define PTHREAD_MUTEX_RECURSIVE         (void *)NULL
+#define PTHREAD_ONCE_INIT               (void *)NULL
+#define PTHREAD_PRIO_INHERIT            (void *)NULL
+#define PTHREAD_PRIO_NONE               (void *)NULL
+#define PTHREAD_PRIO_PROTECT            (void *)NULL
+#define PTHREAD_PROCESS_SHARED          (void *)NULL
+#define PTHREAD_PROCESS_PRIVATE         (void *)NULL
+#define PTHREAD_RWLOCK_INITIALIZER      (void *)NULL
+#define PTHREAD_SCOPE_PROCESS           (void *)NULL
+#define PTHREAD_SCOPE_SYSTEM            (void *)NULL
+
+
+
+
+
+
+
+
 typedef struct _pthread_cond_t { int t; }   pthread_cond_t;
 typedef unsigned long int           pthread_t;
 typedef struct _pthread_attr_t { int t; }   pthread_attr_t;
