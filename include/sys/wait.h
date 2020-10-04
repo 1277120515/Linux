@@ -9,13 +9,13 @@
 // Report status of stopped child process.
 // and the following macros for analysis of process status values:
 
-#define WEXITSTATUS()
+#define WEXITSTATUS(x) int(x)
 // Return exit status.
 #define WIFCONTINUED()
 // True if child has been continued
-#define WIFEXITED()
+#define WIFEXITED(x) int(x)
 // True if child exited normally.
-#define WIFSIGNALED()
+#define WIFSIGNALED(x) int(x)
 // True if child exited due to uncaught signal.
 #define WIFSTOPPED()
 // True if child is currently stopped.
@@ -27,15 +27,15 @@
 
 
 
-#define WEXITED
+#define WEXITED -1
 // Wait for processes that have exited.
-#define WSTOPPED
+#define WSTOPPED -1
 // Status will be returned for any child that has stopped upon receipt of a signal.
 #define WCONTINUED
 // Status will be returned for any child that was stopped and has been continued.
-#define WNOHANG
+#define WNOHANG -1
 // Return immediately if there are no children to wait for.
-#define WNOWAIT
+#define WNOWAIT -1
 // Keep the process whose status is returned in infop in a waitable state.
 // The type idtype_t is defined as an enumeration type whose possible values include at least the following:
 enum

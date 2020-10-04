@@ -63,14 +63,38 @@ char        *crypt(const char *, const char *);
 char        *ctermid(char *);
 char        *cuserid(char *s); 
 int          dup(int);
-int          dup2(int, int);
+
+// 描述符 -- 指针
+//newfd的指针，指向oldfd，返回oldfd的描述符
+int          dup2(int oldfd, int newfd);
+
 void         encrypt(char[64], int);
+
+
+// 1 .带l 的exec函数：execl,execlp,execle，表示后边的参数以可变参数的形式给出且都以一个空指针结束。
+// 2. 带 p 的exec函数：execlp,execvp，表示第一个参数path不用输入完整路径，只有给出命令名即可，它会在环境变量PATH当中查找命令
+// 3. 不带 l 的exec函数：execv,execvp表示命令所需的参数以char *arg[]形式给出且arg最后一个元素必须
+// 4. 带 e 的exec函数：execle表示，将环境变量传递给需要替换的进程
+
+// last parameter is null
 int          execl(const char *, const char *, ...);
+
+// last parameter is null
 int          execle(const char *, const char *, ...);
+
+// last parameter is null
 int          execlp(const char *, const char *, ...);
-int          execv(const char *, char *const[]);
-int          execve(const char *, char *const[], char *const[]);
-int          execvp(const char *, char *const[]);
+
+// null terminal array
+int          execv(const char *, char * args []);
+
+// null terminal array
+int          execve(const char *, char *const[], char * args[]);
+
+// null terminal array
+int          execvp(const char *, char * args[]);
+
+
 void        _exit(int);
 int          fchown(int, uid_t, gid_t);
 int          fchdir(int);
@@ -106,7 +130,10 @@ off_t        lseek(int, off_t, int);
 int          nice(int);
 long int     pathconf(const char *, int);
 int          pause(void);
-int          pipe(int[2]);
+
+// fd[0]: 外部从中读取
+// fd[1]: 外部向里面写入
+int          pipe(int fd[2]);
 ssize_t      pread(int, void *, size_t, off_t);
 int          pthread_atfork(void(*)(void), void(*)(void),
     void(*)(void));

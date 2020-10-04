@@ -11,13 +11,13 @@
 
 // whose value matches no declarable function.
 
-#define SIG_DFL
+#define SIG_DFL 0
 // Request for default signal handling.
-#define SIG_ERR
+#define SIG_ERR 0
 // Return value from signal() in case of error.
-#define SIG_HOLD
+#define SIG_HOLD 0
 // Request that signal be held.
-#define SIG_IGN
+#define SIG_IGN 0
 // Request that signal be ignored.
 
 typedef int sig_atomic_t;
@@ -143,7 +143,7 @@ struct sigevent
 #define SIGUSR1	    // i	User-defined signal 1.
 #define SIGUSR2	    // i	User-defined signal 2.
 #define SIGCHLD	    // iii	Child process terminated or stopped.
-#define SIGCONT	    // v	Continue executing, if stopped.
+#define SIGCONT	(-1)// v	Continue executing, if stopped.
 #define SIGSTOP 17	// iv	Stop executing (cannot be caught or ignored).
 #define SIGTSTP	    // iv	Terminal stop signal.
 #define SIGTTIN	    // iv	Background process attempting read.
@@ -393,9 +393,11 @@ return 0;
 }
 
 
-SIGINT: Ctrl+C
-SIGKILL:不可被屏蔽
-SIGSTOP:不可被屏蔽
+SIGINT:  Ctrl+C
+SIGQUIT: CTRL+\
+SIGTSTP: Ctrl+Z
+SIGKILL: 不可被屏蔽
+SIGSTOP: 不可被屏蔽
 
 Signal	Description
 SIGABRT	由调用abort函数产生，进程非正常退出
@@ -439,7 +441,6 @@ SIGWINCH	当Terminal的窗口大小改变的时候，发送给Foreground Group的所有进程
 SIGXCPU	当CPU时间限制超时的时候
 SIGXFSZ	进程超过文件大小限制
 SIGXRES	Solaris专用，进程超过资源限制的时候发
-
 
 */
 

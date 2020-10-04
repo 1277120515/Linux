@@ -85,19 +85,19 @@ struct stat
 // Implementations may OR other implementation-dependent bits into S_IRWXU, S_IRWXG and S_IRWXO, but they will not overlap any of the other bits defined in this document. The file permission bits are defined to be those corresponding to the bitwise inclusive OR of S_IRWXU, S_IRWXG and S_IRWXO.
 
 
-#define S_ISBLK(m)
+#define S_ISBLK(m) 1
 // Test for a block special file.
-#define S_ISCHR(m)
+#define S_ISCHR(m) 1
 // Test for a character special file.
-#define S_ISDIR(m)
+#define S_ISDIR(m) 1
 // Test for a directory.
-#define S_ISFIFO(m)
+#define S_ISFIFO(m) 1
 // Test for a pipe or FIFO special file.
-#define S_ISREG(m)
+#define S_ISREG(m) 1
 // Test for a regular file.
-#define S_ISLNK(m)
+#define S_ISLNK(m) 1
 // Test for a symbolic link.
-#define S_ISSOCK(m)
+#define S_ISSOCK(m) 1
 
 // The implementation may implement message queues, semaphores, or shared memory objects as distinct file types. 
 // The following macros test whether a file is of the specified type. 
@@ -105,11 +105,11 @@ struct stat
 // The macro evaluates to a non-zero value if the specified object is implemented as a distinct file type and the specified file type is contained in the stat structure referenced by buf. 
 // Otherwise, the macro evaluates to zero.
 
-#define S_TYPEISMQ(buf)
+#define S_TYPEISMQ(buf) 1
 // Test for a message queue
-#define S_TYPEISSEM(buf)
+#define S_TYPEISSEM(buf) 1
 // Test for a semaphore
-#define S_TYPEISSHM(buf)
+#define S_TYPEISSHM(buf) 1
 // Test for a shared memory object
 
 
