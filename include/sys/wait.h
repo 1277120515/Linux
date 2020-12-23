@@ -9,19 +9,22 @@
 // Report status of stopped child process.
 // and the following macros for analysis of process status values:
 
-#define WEXITSTATUS(x) int(x)
+#define WEXITSTATUS(x) (int)(x)
 // Return exit status.
-#define WIFCONTINUED()
+
+#define WIFCONTINUED(x) (int)(x) // 指出子进程是否为正常退出的，如果是，它会返回一个非零值。
 // True if child has been continued
-#define WIFEXITED(x) int(x)
+
+#define WIFEXITED(x) (int)(x)
 // True if child exited normally.
-#define WIFSIGNALED(x) int(x)
+
+#define WIFSIGNALED(x) (int)(x)
 // True if child exited due to uncaught signal.
-#define WIFSTOPPED()
+#define WIFSTOPPED(x) (int)(x)
 // True if child is currently stopped.
-#define WSTOPSIG()
+#define WSTOPSIG(x) (int)(x)
 // Return signal number that caused process to stop.
-#define WTERMSIG()
+#define WTERMSIG(x) (int)(x)
 // Return signal number that caused process to terminate.
 // The following symbolic constants are defined as possible values for the options argument to waitid():
 
@@ -59,7 +62,20 @@ typedef siginfo_t;
 pid_t  wait(int *);
 pid_t  wait3(int *, int, struct rusage *);
 int    waitid(idtype_t, id_t, siginfo_t *, int);
-pid_t  waitpid(pid_t, int *, int);
+
+
+// status
+//   WIFEXITED(status)   如果进程子进程正常结束，返回一个非零值
+//   WEXITSTATUS(status) 如果WIFEXITED非零，返回子进程退出码
+// 
+// option
+// 1. WNOHANG     不阻塞，立即返回0
+// 2. WUNTRACED
+// 返回值:
+// 1. 当正常返回的时候，waitpid返回收集到的子进程的进程ID；
+// 2. 如果设置了选项WNOHANG，而调用中waitpid发现没有已退出的子进程可收集，则返回0；
+// 3. 如果调用中出错，则返回 - 1，这时errno会被设置成相应的值以指示错误所在
+pid_t  waitpid(pid_t pid, int * status, int option);
 
 
 

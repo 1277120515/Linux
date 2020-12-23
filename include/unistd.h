@@ -44,6 +44,7 @@ extern int    optind, opterr, optopt;
 typedef int uid_t;
 typedef int gid_t;
 typedef int off_t;
+// 由此我们终于找到了pid_t的真实定义：实际他就是  int  类型的。
 typedef int pid_t;
 typedef int useconds_t;
 
@@ -77,22 +78,25 @@ void         encrypt(char[64], int);
 // 4. 带 e 的exec函数：execle表示，将环境变量传递给需要替换的进程
 
 // last parameter is null
-int          execl(const char *, const char *, ...);
+int          execl(const char * path, const char *, ...);
 
 // last parameter is null
-int          execle(const char *, const char *, ...);
+int          execle(const char * path, const char *, ...);
 
 // last parameter is null
-int          execlp(const char *, const char *, ...);
+int          execlp(const char * path, const char *, ...);
 
 // null terminal array
-int          execv(const char *, char * args []);
+int          execv(const char * path, char * args []);
 
 // null terminal array
-int          execve(const char *, char *const[], char * args[]);
+int          execve(const char * path, char *const[], char * args[]);
 
 // null terminal array
-int          execvp(const char *, char * args[]);
+int          execvp(const char * path, char * args[]);
+
+int         execvpe(const char * path, char * const argv[], char * const envp[]);
+
 
 
 void        _exit(int);

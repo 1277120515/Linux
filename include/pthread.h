@@ -134,3 +134,60 @@ int   pthread_setspecific(pthread_key_t, const void *);
 void  pthread_testcancel(void);
 
 #endif	
+
+/***************************************************************************
+
+#include <stdio.h>
+//#include <stdlib.h>
+//#include <unistd.h>
+//#include <pthread.h>
+//
+//int gNum = 0;
+//pthread_mutex_t gMutex;
+//pthread_cond_t gCond;
+//
+//void * threadFun(void * args)
+//{
+//    while (1)
+//    {
+//        pthread_mutex_lock(&gMutex);
+//        while (gNum <= 0)
+//        {
+//            pthread_cond_wait(&gCond, &gMutex);
+//            printf("%lu\n", pthread_self());
+//        }
+//        printf("%s N = %d\n", (char *)args, gNum);
+//        gNum--;
+//        pthread_mutex_unlock(&gMutex);
+//    }
+//}
+//
+//int main()
+//{
+//    pthread_t pid1, pid2, pid3;
+//
+//    pthread_mutex_init(&gMutex, NULL);
+//    pthread_cond_init(&gCond, NULL);
+//
+//    pthread_create(&pid1, NULL, threadFun, (void *)"Thread 1");
+//    pthread_create(&pid2, NULL, threadFun, (void *)"Thread 2");
+//
+//    while (1)
+//    {
+//        pthread_mutex_lock(&gMutex);
+//        gNum += 1;
+//        pthread_cond_broadcast(&gCond); // 唤醒全部线程，但只有一个线程能够拿到锁；当拿到锁的线程unlock释放锁后，被唤醒的其他线程获取锁，开始执行while
+//        // pthread_cond_signal(&gCond); // 唤醒一个线程，这个线程拿到锁，继续执行，其余未被唤醒的线程，仍然sleep
+//
+//        pthread_mutex_unlock(&gMutex);
+//
+//        sleep(1);
+//    }
+//
+//    pthread_join(pid1, NULL);
+//    pthread_join(pid2, NULL);
+//
+//    pthread_mutex_destroy(&gMutex);
+//    pthread_cond_destroy(&gCond);
+//}
+***************************************************************************/
