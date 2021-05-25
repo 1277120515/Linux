@@ -72,10 +72,13 @@ int          dup2(int oldfd, int newfd);
 void         encrypt(char[64], int);
 
 
-// 1 .带l 的exec函数：execl,execlp,execle，表示后边的参数以可变参数的形式给出且都以一个空指针结束。
-// 2. 带 p 的exec函数：execlp,execvp，表示第一个参数path不用输入完整路径，只有给出命令名即可，它会在环境变量PATH当中查找命令
-// 3. 不带 l 的exec函数：execv,execvp表示命令所需的参数以char *arg[]形式给出且arg最后一个元素必须
-// 4. 带 e 的exec函数：execle表示，将环境变量传递给需要替换的进程
+// 1 .带 l 的exec函数：execl,execlp,execle，表示后边的参数以可变参数的形式给出且都以一个空指针结束。
+// 2. 带 v 的exec函数：execv,execvp表示命令所需的参数以char *arg[]形式给出且arg最后一个元素必须
+
+// 3. 带 p 的exec函数：execlp,execvp，表示第一个参数path不用输入完整路径，只有给出命令名即可，它会在环境变量PATH当中查找命令
+// 4. 不带 p 的exec函数：execlp,execvp，表示用全路径
+
+// 5. 带 e 的exec函数：execle表示，将环境变量传递给需要替换的进程
 
 // last parameter is null
 int          execl(const char * path, const char *, ...);
